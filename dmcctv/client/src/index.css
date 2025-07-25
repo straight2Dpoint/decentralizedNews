@@ -1,0 +1,59 @@
+/* Global styles for the DMCCTV application */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.navbar {
+    background-color: #007bff;
+    padding: 10px;
+    color: #fff;
+}
+
+.news-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #fff;
+}
+
+.submit-news {
+    margin: 20px 0;
+}
+
+.vote-system {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
