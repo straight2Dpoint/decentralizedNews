@@ -1,7 +1,7 @@
 const API_BASE_URL = "https://decentralized-news-zeta.vercel.app";
 const IPFS_URL = "https://ipfs.infura.io/ipfs/";
 
-export const contractAddress = "0xYourNewsContractAddress"; // Replace with your deployed contract address
+export const contractAddress = "0x5CC2AE4758Bfa1f7C399C9aC1547560606541572"; 
 
 export const contractABI = [
     {
