@@ -1,0 +1,39 @@
+:root {
+  /* Primary Colors */
+  --primary-red: #dc2626;
+  --primary-green: #059669;
+  --primary-blue: #2563eb;
+
+  /* Light Variants */
+  --light-red: #fee2e2;
+  --light-green: #d1fae5;
+  --light-blue: #dbeafe;
+
+  /* Dark Variants */
+  --dark-red: #991b1b;
+  --dark-green: #047857;
+  --dark-blue: #1e40af;
+
+  /* Neutral Colors */
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4b5563;
+  --border: #e5e7eb;
+
+  /* System Colors */
+  --success: var(--primary-green);
+  --warning: #f59e0b;
+  --error: var(--primary-red);
+  --info: var(--primary-blue);
+
+  /* Component-specific Colors */
+  --nav-bg: var(--background);
+  --nav-text: var(--text-primary);
+  --sidebar-bg: var(--surface);
+  --card-bg: var(--background);
+  --button-primary-bg: var(--primary-red);
+  --button-primary-text: white;
+  --button-secondary-bg: var(--light-blue);
+  --button-secondary-text: var(--primary-blue);
+}
