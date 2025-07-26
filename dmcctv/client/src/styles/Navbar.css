@@ -1,0 +1,158 @@
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  height: 32px;
+  width: auto;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.mobile-nav {
+  display: none;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav.hidden {
+  display: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-link.active {
+  color: var(--primary-color);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.connect-wallet {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.connect-wallet:hover {
+  background-color: #b91c1c;
+}
+
+.wallet-address {
+  font-size: 0.875rem;
+  color: #4b5563;
+  padding: 0.5rem 1rem;
+  background-color: #f3f4f6;
+  border-radius: 6px;
+}
+
+.mobile-menu-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: block;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .mobile-nav.hidden {
+    display: none;
+  }
+
+  .mobile-nav .nav-link {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none !important;
+  }
+
+  .mobile-menu-button {
+    display: none !important;
+  }
+}

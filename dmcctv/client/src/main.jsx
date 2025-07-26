@@ -1,14 +1,17 @@
-// filepath: dmcctv/client/src/main.jsx
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import App from "./App";
-import { NewsProvider } from "./context/NewsContext";
-import "./index.css";
+import App from './App';
+import { NewsProvider } from './context/NewsContext';
+import './index.css';
 
-ReactDOM.render(
-  <NewsProvider>
-    <App />
-  </NewsProvider>,
-  document.getElementById("root"),
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+  <Router>
+    <NewsProvider>
+      <App />
+    </NewsProvider>
+  </Router>
 );

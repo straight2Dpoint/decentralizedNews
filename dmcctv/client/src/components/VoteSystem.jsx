@@ -1,21 +1,33 @@
-// filepath: dmcctv/dmcctv/client/src/components/VoteSystem.jsx
 import React, { useContext } from 'react';
 import { NewsContext } from '../context/NewsContext';
 
 const VoteSystem = ({ reportId }) => {
-    const { voteOnReport } = useContext(NewsContext);
+  const { voteOnReport, currentAccount } = useContext(NewsContext);
 
-    const handleVote = (isAuthentic) => {
-        voteOnReport(reportId, isAuthentic);
-    };
+  const handleVote = async (isVerified) => {
+    try {
+      await voteOnReport(reportId, isVerified);
+    } catch (error) {
+      console.error('Error voting:', error);
+    }
+  };
 
-    return (
-        <div className="vote-system">
-            <h3>Vote on Report Authenticity</h3>
-            <button onClick={() => handleVote(true)}>Authentic</button>
-            <button onClick={() => handleVote(false)}>Not Authentic</button>
-        </div>
-    );
+  return (
+    <div className="flex space-x-4">
+      <button
+        onClick={() => handleVote(true)}
+        className="bg-green-500 text-white px-4 py-2 rounded-lg"
+      >
+        Verify
+      </button>
+      <button
+        onClick={() => handleVote(false)}
+        className="bg-red-500 text-white px-4 py-2 rounded-lg"
+      >
+        Dispute
+      </button>
+    </div>
+  );
 };
 
 export default VoteSystem;
