@@ -18,8 +18,9 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <div className="navbar-container">
-        <NavLink to="/" className="navbar-logo">
-          🧿 DMCCTV
+        <NavLink to="/" className="navbar-brand">
+          <img src="/logo.png" alt="DMCCTV" className="navbar-logo" />
+          <span className="navbar-title">DMCCTV</span>
         </NavLink>
 
         <nav className="desktop-nav">
