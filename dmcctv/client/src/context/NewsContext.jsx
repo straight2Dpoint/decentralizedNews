@@ -8,10 +8,17 @@ export const NewsContext = createContext();
 const { ethereum } = window;
 
 // IPFS client setup
+const projectId = import.meta.env.VITE_INFURA_PROJECT_ID;
+const projectSecret = import.meta.env.VITE_INFURA_PROJECT_SECRET;
+const auth = 'Basic ' + btoa(projectId + ':' + projectSecret);
+
 const ipfs = create({
   host: 'ipfs.infura.io',
   port: 5001,
-  protocol: 'https'
+  protocol: 'https',
+  headers: {
+    authorization: auth
+  }
 });
 
 export const NewsProvider = ({ children }) => {
@@ -19,9 +26,9 @@ export const NewsProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [reports, setReports] = useState([]);
 
-  const getNewsContract = () => {
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const signer = provider.getSigner();
+  const getNewsContract = async () => {
+    const provider = new ethers.BrowserProvider(ethereum);
+    const signer = await provider.getSigner();
     const newsContract = new ethers.Contract(contractAddress, contractABI, signer);
     return newsContract;
   };
@@ -31,7 +38,7 @@ export const NewsProvider = ({ children }) => {
       if (!ethereum) return alert('Please install MetaMask');
       setIsLoading(true);
 
-      const newsContract = getNewsContract();
+      const newsContract = await getNewsContract();
       const reportsCount = await newsContract.reportsCount();
       const reportsList = [];
 
@@ -121,7 +128,7 @@ export const NewsProvider = ({ children }) => {
       const reportHash = reportResult.path;
 
       // Submit to blockchain
-      const newsContract = getNewsContract();
+      const newsContract = await getNewsContract();
       const transaction = await newsContract.submitReport(reportHash);
       await transaction.wait();
 
