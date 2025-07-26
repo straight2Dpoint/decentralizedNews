@@ -7,31 +7,49 @@ export const NewsContext = createContext();
 
 const { ethereum } = window;
 
+// Import sample data
+import { sampleNews } from '../utils/sampleData';
+
 // IPFS client setup
+const projectId = import.meta.env.VITE_INFURA_PROJECT_ID;
+const projectSecret = import.meta.env.VITE_INFURA_PROJECT_SECRET;
+const auth = 'Basic ' + btoa(projectId + ':' + projectSecret);
+
 const ipfs = create({
   host: 'ipfs.infura.io',
   port: 5001,
-  protocol: 'https'
+  protocol: 'https',
+  headers: {
+    authorization: auth
+  }
 });
 
 export const NewsProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [reports, setReports] = useState([]);
+  const [useSampleData, setUseSampleData] = useState(false);
 
-  const getNewsContract = () => {
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const signer = provider.getSigner();
+  const getNewsContract = async () => {
+    const provider = new ethers.BrowserProvider(ethereum);
+    const signer = await provider.getSigner();
     const newsContract = new ethers.Contract(contractAddress, contractABI, signer);
     return newsContract;
   };
 
   const getAllReports = async () => {
     try {
-      if (!ethereum) return alert('Please install MetaMask');
       setIsLoading(true);
+      
+      if (useSampleData) {
+        setReports(sampleNews);
+        setIsLoading(false);
+        return;
+      }
 
-      const newsContract = getNewsContract();
+      if (!ethereum) return alert('Please install MetaMask');
+
+      const newsContract = await getNewsContract();
       const reportsCount = await newsContract.reportsCount();
       const reportsList = [];
 
@@ -121,7 +139,7 @@ export const NewsProvider = ({ children }) => {
       const reportHash = reportResult.path;
 
       // Submit to blockchain
-      const newsContract = getNewsContract();
+      const newsContract = await getNewsContract();
       const transaction = await newsContract.submitReport(reportHash);
       await transaction.wait();
 
@@ -144,7 +162,10 @@ export const NewsProvider = ({ children }) => {
       currentAccount,
       isLoading,
       reports,
-      submitReport
+      submitReport,
+      useSampleData,
+      setUseSampleData,
+      getAllReports
     }}>
       {children}
     </NewsContext.Provider>

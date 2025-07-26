@@ -21,7 +21,7 @@ const NewsCard = ({ report }) => {
   const defaultImage = 'https://images.unsplash.com/photo-1504465039710-0371a06ec386?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60';
 
   return (
-    <article className="news-card">
+    <article className="news-card bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
       <div className="news-card-image-container">
         <img
           src={imageUrl || defaultImage}
@@ -40,9 +40,9 @@ const NewsCard = ({ report }) => {
         )}
       </div>
 
-      <div className="news-card-content">
-        <h3 className="news-card-title">{title}</h3>
-        <p className="news-card-description">{description}</p>
+      <div className="news-card-content p-4">
+        <h3 className="news-card-title text-gray-900 dark:text-white text-xl font-semibold">{title}</h3>
+        <p className="news-card-description text-gray-600 dark:text-gray-300 mt-2">{description}</p>
         
         <div className="news-card-metadata">
           <div className="news-card-location">
