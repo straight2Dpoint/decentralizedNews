@@ -14,7 +14,7 @@ const categories = [
 
 const Sidebar = () => {
   return (
-    <aside className="sidebar">
+    <aside className="sidebar bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 p-4">
       <div className="sidebar-section">
         <h3 className="sidebar-heading">
           <BiCalendar />

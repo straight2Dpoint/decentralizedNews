@@ -15,10 +15,35 @@
   margin-bottom: 1.5rem;
 }
 
+.controls-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .home-title {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--text-color);
+}
+
+.data-toggle {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.data-toggle.live {
+  background-color: #10B981;
+  color: white;
+}
+
+.data-toggle.sample {
+  background-color: #F59E0B;
+  color: white;
 }
 
 .view-controls {

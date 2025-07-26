@@ -7,6 +7,9 @@ export const NewsContext = createContext();
 
 const { ethereum } = window;
 
+// Import sample data
+import { sampleNews } from '../utils/sampleData';
+
 // IPFS client setup
 const projectId = import.meta.env.VITE_INFURA_PROJECT_ID;
 const projectSecret = import.meta.env.VITE_INFURA_PROJECT_SECRET;
@@ -25,6 +28,7 @@ export const NewsProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [reports, setReports] = useState([]);
+  const [useSampleData, setUseSampleData] = useState(false);
 
   const getNewsContract = async () => {
     const provider = new ethers.BrowserProvider(ethereum);
@@ -35,8 +39,15 @@ export const NewsProvider = ({ children }) => {
 
   const getAllReports = async () => {
     try {
-      if (!ethereum) return alert('Please install MetaMask');
       setIsLoading(true);
+      
+      if (useSampleData) {
+        setReports(sampleNews);
+        setIsLoading(false);
+        return;
+      }
+
+      if (!ethereum) return alert('Please install MetaMask');
 
       const newsContract = await getNewsContract();
       const reportsCount = await newsContract.reportsCount();
@@ -151,7 +162,10 @@ export const NewsProvider = ({ children }) => {
       currentAccount,
       isLoading,
       reports,
-      submitReport
+      submitReport,
+      useSampleData,
+      setUseSampleData,
+      getAllReports
     }}>
       {children}
     </NewsContext.Provider>

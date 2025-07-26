@@ -46,8 +46,8 @@ const SubmitNews = () => {
   };
 
   return (
-    <div className="submit-container">
-      <h2 className="submit-title">Submit News Report</h2>
+    <div className="submit-container bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+      <h2 className="submit-title text-2xl font-bold mb-6 text-gray-900 dark:text-white">Submit News Report</h2>
       <form onSubmit={handleSubmit} className="submit-form">
         <div className="form-group">
           <label className="form-label">Title</label>

@@ -7,9 +7,18 @@ import '../styles/Home.css';
 
 const Home = () => {
   const [view, setView] = useState('grid');
-  const { isLoading } = useContext(NewsContext);
+  const { 
+    isLoading, 
+    reports, 
+    useSampleData, 
+    setUseSampleData,
+    getAllReports
+  } = useContext(NewsContext);
 
-  const { reports } = useContext(NewsContext);
+  const toggleDataSource = () => {
+    setUseSampleData(!useSampleData);
+    getAllReports();
+  };
 
   return (
     <div className="home">
@@ -17,19 +26,27 @@ const Home = () => {
       <main className="home-main">
         <div className="home-header">
           <h1 className="home-title">Latest Reports</h1>
-          <div className="view-controls">
+          <div className="controls-wrapper">
             <button
-              onClick={() => setView('grid')}
-              className={`view-button ${view === 'grid' ? 'active' : ''}`}
+              onClick={toggleDataSource}
+              className={`data-toggle ${useSampleData ? 'sample' : 'live'}`}
             >
-              <BiGridAlt size={20} />
+              {useSampleData ? 'Using Sample Data' : 'Using Live Data'}
             </button>
-            <button
-              onClick={() => setView('list')}
-              className={`view-button ${view === 'list' ? 'active' : ''}`}
-            >
-              <BiListUl size={20} />
-            </button>
+            <div className="view-controls">
+              <button
+                onClick={() => setView('grid')}
+                className={`view-button ${view === 'grid' ? 'active' : ''}`}
+              >
+                <BiGridAlt size={20} />
+              </button>
+              <button
+                onClick={() => setView('list')}
+                className={`view-button ${view === 'list' ? 'active' : ''}`}
+              >
+                <BiListUl size={20} />
+              </button>
+            </div>
           </div>
         </div>
         
