@@ -5,6 +5,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animate-gradient {
+    animation: gradientAnimation 15s ease infinite;
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
