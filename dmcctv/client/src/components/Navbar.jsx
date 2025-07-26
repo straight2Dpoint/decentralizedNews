@@ -21,8 +21,12 @@ export default function Navbar() {
     <header className="navbar bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
       <div className="navbar-container">
         <NavLink to="/" className="navbar-brand">
-          <img src="/logo.png" alt="DMCCTV" className="navbar-logo" />
-          <span className="navbar-title">DMCCTV</span>
+          <img 
+            src={darkMode ? "/logo-dark.png" : "/logo.png"} 
+            alt="DMCCTV" 
+            className="navbar-logo" 
+          />
+          <span className="navbar-title dark:text-white">DMCCTV</span>
         </NavLink>
 
         <nav className="desktop-nav">
