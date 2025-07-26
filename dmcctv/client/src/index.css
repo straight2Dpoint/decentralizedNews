@@ -1,59 +1,85 @@
-/* Global styles for the DMCCTV application */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-breaking {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .badge-urgent {
+    @apply bg-amber-100 text-amber-800;
+  }
+}
+
+:root {
+  --primary-color: #dc2626;
+  --secondary-color: #f59e0b;
+  --background-light: #f8fafc;
+  --text-primary: #1f2937;
+}
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-light);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
-}
+@layer components {
+  .card {
+    @apply bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200;
+  }
 
-a {
-    text-decoration: none;
-    color: #007bff;
-}
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg transition duration-200;
+  }
 
-a:hover {
-    text-decoration: underline;
-}
+  .badge {
+    @apply px-2 py-1 text-xs font-medium rounded-full;
+  }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
+  .badge-breaking {
+    @apply bg-red-100 text-red-800;
+  }
 
-.footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
-}
-
-.navbar {
-    background-color: #007bff;
-    padding: 10px;
-    color: #fff;
-}
-
-.news-card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #fff;
-}
-
-.submit-news {
-    margin: 20px 0;
-}
-
-.vote-system {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+  .badge-urgent {
+    @apply bg-amber-100 text-amber-800;
+  }
 }
